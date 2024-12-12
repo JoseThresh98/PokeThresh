@@ -1,0 +1,136 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Estilos */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #ffcc00;
+}
+
+/* Estilo del icono del menú móvil */
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 3.5rem;
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        text-align: right;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links li {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* Estilos de la tarjeta flotante */
+.pokemon-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    position: relative;
+    transform: translateY(50px); /* Para un efecto de flotante */
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.pokemon-card:hover {
+    transform: translateY(0); /* Mueve la tarjeta al hacer hover */
+}
+
+.pokemon-card img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.pokemon-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.pokemon-card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.pokemon-card .variants img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.pokemon-card .variants p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* Estadísticas */
+.stats {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.stats p {
+    font-size: 12px;
+}
+
+/* Responsividad para la tarjeta */
+@media (max-width: 600px) {
+    .pokemon-card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .pokemon-card img {
+        width: 120px;
+        height: 120px;
+    }
+}
