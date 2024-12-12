@@ -30,7 +30,21 @@ def get_evolutions(species_url):
             # Recorrer la cadena de evoluciones
             current_evolution = evolution_data['chain']
             while current_evolution:
-                evolutions.append(current_evolution['species']['name'])
+                evolution_name = current_evolution['species']['name']
+                # Obtener el sprite de la evolución
+                evolution_sprite_url = f"https://pokeapi.co/api/v2/pokemon/{evolution_name}"
+                evolution_sprite_response = requests.get(evolution_sprite_url)
+                if evolution_sprite_response.status_code == 200:
+                    evolution_sprite_data = evolution_sprite_response.json()
+                    evolution_sprite = evolution_sprite_data['sprites'].get('front_default', '')
+                else:
+                    evolution_sprite = ""  # Asignar sprite vacío si no se encuentra
+
+                evolutions.append({
+                    'name': evolution_name,
+                    'sprite': evolution_sprite
+                })
+
                 # Avanzar a la siguiente evolución
                 if 'evolves_to' in current_evolution and len(current_evolution['evolves_to']) > 0:
                     current_evolution = current_evolution['evolves_to'][0]
@@ -44,6 +58,7 @@ def get_evolutions(species_url):
     except Exception as e:
         print(f"Error al obtener evoluciones: {e}")
         return []
+
 
 # Ruta para obtener la información de un Pokémon
 @app.route('/pokemon/<pokemon_name>', methods=['GET'])

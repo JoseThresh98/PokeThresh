@@ -23,4 +23,15 @@
     border: none;
     border-radius: 5px;
   }
+
+  .error {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .pokemon-result {
+    margin-top: 20px;
+  }
+  
   

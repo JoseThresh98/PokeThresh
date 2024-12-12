@@ -1,17 +1,38 @@
 import React, { useState } from 'react';
 import '../Styles/Home.css';
+import PokemonCard from '../components/PokemonCard';
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [pokemonData, setPokemonData] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    console.log('Buscando:', searchQuery);
-    // Aquí puedes agregar la lógica para mostrar resultados de búsqueda
+
+    if (!searchQuery.trim()) {
+      setError('Por favor, introduce el nombre de un Pokémon.');
+      setPokemonData(null);
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://127.0.0.1:5000/pokemon/${searchQuery.toLowerCase()}`);
+      if (!response.ok) {
+        throw new Error(`No se encontró el Pokémon ${searchQuery}.`);
+      }
+
+      const data = await response.json();
+      setPokemonData(data); // Actualiza el estado con los datos del Pokémon
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+      setPokemonData(null);
+    }
   };
 
   return (
@@ -27,6 +48,14 @@ function Home() {
         />
         <button type="submit">Buscar</button>
       </form>
+
+      {error && <div className="error">{error}</div>}
+
+      {pokemonData && (
+        <div className="pokemon-result">
+          <PokemonCard pokemonData={pokemonData} />
+        </div>
+      )}
     </div>
   );
 }
