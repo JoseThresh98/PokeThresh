@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
 /* Navbar Estilos */
@@ -13,6 +14,11 @@ body {
     background-color: #333;
     color: white;
     padding: 0.5rem 1rem;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .nav-links {
@@ -66,71 +72,165 @@ body {
     }
 }
 
-/* Estilos de la tarjeta flotante */
-.pokemon-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    margin: 20px auto;
+/* Barra de búsqueda */
+.search-container {
     text-align: center;
-    position: relative;
-    transform: translateY(50px); /* Para un efecto de flotante */
-    transition: transform 0.3s ease;
-    z-index: 10;
+    margin: 20px;
 }
 
-.pokemon-card:hover {
-    transform: translateY(0); /* Mueve la tarjeta al hacer hover */
+.search-container input {
+    padding: 0.5rem;
+    width: 80%;
+    max-width: 400px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-.pokemon-card img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
+.search-container button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #ffcc00;
+}
+
+/* Estilo de la tarjeta con la información del Pokémon */
+.pokemon-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
 }
 
 .pokemon-card h2 {
-    font-size: 24px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.pokemon-card img {
+    width: 120px;
+    height: 120px;
     margin-bottom: 10px;
 }
 
 .pokemon-card p {
-    font-size: 14px;
+    font-size: 1rem;
     margin: 5px 0;
 }
 
-.pokemon-card .variants img {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
+.pokemon-card .sprites img {
+    width: 100px;
+    height: 100px;
+    margin: 10px 5px;
 }
 
-.pokemon-card .variants p {
-    font-size: 14px;
-    margin: 10px 0;
+.pokemon-card .evolutions ul {
+    list-style: none;
+    padding: 0;
 }
 
-/* Estadísticas */
-.stats {
+.pokemon-card .evolutions ul li {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+/* Estilo para los contenedores de sprite shiny */
+.pokemon-card .sprites p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.pokemon-card .sprites img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Estilo para las estadísticas */
+.pokemon-card .stats {
     margin-top: 20px;
     text-align: left;
 }
 
-.stats p {
-    font-size: 12px;
+.pokemon-card .stats ul {
+    list-style: none;
+    padding: 0;
 }
 
-/* Responsividad para la tarjeta */
-@media (max-width: 600px) {
-    .pokemon-card {
-        width: 90%;
-        padding: 15px;
-    }
+.pokemon-card .stats ul li {
+    font-size: 1rem;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .pokemon-card img {
-        width: 120px;
-        height: 120px;
-    }
+.pokemon-card .evolutions {
+    margin-top: 20px;
+}
+
+.pokemon-card .evolutions ul li {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+/* Estilo para las versiones shiny */
+.pokemon-card .shiny-version {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.pokemon-card .shiny-version img {
+    width: 120px;
+    height: 120px;
+}
+
+/* Estilo de los botones */
+button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #ffcc00;
+}
+
+/* Evoluciones */
+.pokemon-card .evolutions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pokemon-card .evolutions-list {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+.pokemon-card .evolutions-list .evolution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pokemon-card .evolutions-list .evolution img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 5px;
 }
