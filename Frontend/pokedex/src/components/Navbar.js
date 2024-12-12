@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../Styles/Navbar.css';
 
 function Navbar() {
@@ -10,13 +11,15 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">PokéThresh</div>
+      <div className="logo" onClick={() => window.location.href = '/'}>
+      PokéThresh
+      </div>
       <button id="menu-icon" className="menu-icon" onClick={toggleMenu}>
         &#9776;
       </button>
       <ul id="nav-links" className={`nav-links ${menuOpen ? 'open' : ''}`}>
         <li>
-          <a href="#" className="nav-link">Buscador</a>
+          <Link to="/" className="nav-link">Buscador</Link> {/* Redirige a la Home */}
         </li>
         <li>
           <a href="#" className="nav-link">Tipos</a>
